@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:13.2
+    container_name: events_postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_value:/var/lib/postgresql/data/
+    env_file:
+      - events_project/events_project/.env
+volumes:
+  db_value:
