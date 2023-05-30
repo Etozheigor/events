@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Organization, Event
+from .models import Event, Organization
 
 
 @admin.register(Organization)

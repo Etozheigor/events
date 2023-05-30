@@ -1,10 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.safestring import mark_safe
-import os.path
-
-
-User = get_user_model()
 
 
 class Organization(models.Model):
@@ -38,16 +33,13 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def image_tag(self):
         if self.image:
-            # print(os.path.abspath(os.curdir))
-            # print(os.path.abspath(__file__))
-            print(os.path.isfile("C:\Dev\events\events_project\media\\temp_bBDm4qJ.png"))
-            # print(mark_safe(f'<img src="{self.image.url}" style="width: 45px; height:45px;" />'))
-            # return mark_safe(f'<img src="{self.image.url}" style="width: 45px; height:45px;" />')
-            print(mark_safe('<img src="C:\Dev\events\events_project\media\\temp_bBDm4qJ.png" style="width: 45px; height:45px;" />'))
-            return mark_safe('<img src="C:\Dev\events\events_project\media\\temp_bBDm4qJ.png" style="width: 45px; height:45px;" />')
+            return mark_safe(
+                f'<img src="{self.image.url}"'
+                'style="width: 45px; height:45px;" />')
         else:
-            return 'No Image Found'
+            return 'Изображение не найдено'
+
     image_tag.short_description = 'Изображение'
